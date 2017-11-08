@@ -13,6 +13,8 @@ r = requests.get(url = URL, params = PARAMS)
 
 data = r.json()
 
+# print(rand_num)
+
 filtered_data = data['filteredCampaigns']
 
 for x in filtered_data:
@@ -20,14 +22,19 @@ for x in filtered_data:
         print(x['failedFilters'][0])
 
 
-# t = HTML.Table(header_row=['CampaignId', 'CampaignName', 'Reason/message'])
-#
-# for x in filtered_data:
-#     t.rows.append([x['campaignId'], x['campaignname'], x['failedFilters'][0]['message']])
-#
-# htmlcode = str(t)
-#
-# print(htmlcode)
+t = HTML.Table(header_row=['CampaignId', 'CampaignName', 'Reason/message'])
 
+for x in filtered_data:
+    t.rows.append([x['campaignId'], x['campaignname'], x['failedFilters'][0]['message']])
 
-# print(filtered_data)
+htmlcode = str(t)
+
+print(htmlcode)
+
+# SELECT sites.site_id, products.product_id
+# FROM sites, products
+# WHERE (sites.site_id = 10 OR sites.site_id = 12) AND (products.product_id != 31 OR  products.product_id != 33);
+#
+# SELECT sites.site_id, products.product_id
+# FROM sites, products
+# WHERE (sites.site_id != 10 OR sites.site_id != 12) AND (products.product_id = 31 OR  products.product_id = 33);
